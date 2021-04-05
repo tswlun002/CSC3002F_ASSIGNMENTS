@@ -36,9 +36,9 @@ public class Client {
                {
                    //get messages while user was offline
                   // buffer =recipient+" : view"
-                   DatagramPacket req = new DatagramPacket((recipient+" : view").getBytes(),( recipient+" : view").getBytes().length, socket.getLocalAddress(), Math.toIntExact(pin));
-                   socket.send(req);
-                   status_login=true;
+                   //DatagramPacket req = new DatagramPacket((recipient+" : view").getBytes(),( recipient+" : view").getBytes().length, socket.getLocalAddress(), Math.toIntExact(pin));
+                   //socket.send(req);
+                   //status_login=true;
                }
                else
                {
