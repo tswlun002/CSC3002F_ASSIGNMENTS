@@ -32,7 +32,9 @@ public class ClientHandler implements Runnable
 
                 //get identifier of user message is being send to
                 String received_mess = new String(receivedPecket.getData());
+                //int len = ;
                 port_recipient = Integer.parseInt(received_mess.substring(0, received_mess.indexOf(":")).trim());
+                String sender_message =received_mess /*received_mess.substring(received_mess.indexOf(":")+1,received_mess.length())*/;
 
                 //print connection status
                 System.out.println("From > " + receivedPecket.getPort()+" Connection status > " +sever_socket.isConnected());
@@ -41,20 +43,15 @@ public class ClientHandler implements Runnable
                 //sending and storing data
                 if (new String(receivedPecket.getData()).equalsIgnoreCase("quit")) {
 
-                    DatagramPacket sending_to_client = new DatagramPacket((new String(receivedPecket.getData())).getBytes(StandardCharsets.UTF_8), (new String(receivedPecket.getData()).length()), receivedPecket.getAddress(), port_recipient);
+                    DatagramPacket sending_to_client = new DatagramPacket(sender_message.getBytes(StandardCharsets.UTF_8), sender_message.length(), receivedPecket.getAddress(), port_recipient);
 
                     sever_socket.send(sending_to_client);
                     System.out.println("client massage: " + new String(sending_to_client.getData()));
                     break;
                 }
-                else if (new String(receivedPecket.getData()).equalsIgnoreCase("view"))
-                {
-                    DatagramPacket sending_to_client = new DatagramPacket((new String(receivedPecket.getData())).getBytes(StandardCharsets.UTF_8), (new String(receivedPecket.getData()).length()), receivedPecket.getAddress(), port_recipient);
-                    sever_socket.send(sending_to_client);
-                }
                 else
                     {
-                    DatagramPacket sending_to_client = new DatagramPacket((new String(receivedPecket.getData())).getBytes(StandardCharsets.UTF_8), (new String(receivedPecket.getData()).length()), receivedPecket.getAddress(), port_recipient);
+                    DatagramPacket sending_to_client = new DatagramPacket(sender_message.getBytes(StandardCharsets.UTF_8), sender_message.length(), receivedPecket.getAddress(), port_recipient);
 
                     sever_socket.send(sending_to_client);
                     System.out.println("client massage: " + new String(sending_to_client.getData()));
