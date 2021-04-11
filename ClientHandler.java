@@ -21,10 +21,10 @@ public class ClientHandler implements Runnable
         {
             DatagramPacket receivedPecket;
             int port_recipient = 0;
-            byte[] buffer = new byte[1024];
+            
             while (true) {
 
-
+				byte[] buffer = new byte[1024];
                //receive data
                 receivedPecket = new DatagramPacket(buffer, 0, buffer.length);
                 sever_socket.receive(receivedPecket);
