@@ -1,4 +1,3 @@
-
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -66,4 +65,3 @@ public class ClientHandler implements Runnable
     }
 
 }
-
